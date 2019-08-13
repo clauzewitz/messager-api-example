@@ -1,2 +1,2 @@
-# messager-api-example
+# messenger-api-example
 KakaoTalk, Slack, Telegram API example

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<title>Login Demo - Telegram</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type='text/javascript'>
+    function sendMessage() {
+        $.ajax({
+            url: '/telegram/send/message',
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                chatId: $('#chatId').val(),
+                type: '/error',
+                message: $('#message').val()
+            },
+            success: function(response) {
+                if (response.result == 0) {
+                    alert('success');
+                } else {
+                    alert('fail');
+                }
+            },
+            error: function (error) {
+                alert('fail');
+            }
+        });
+    }
+</script>
+</head>
+<body>
+    <section>
+        <h2>Sendign Messages</h2>
+        <div>
+            <label for="chatId">
+                chatId
+                <input type="text" id="chatId" />
+            </label>
+        </div>
+        <div>
+            <label for="message">
+                message
+                <input type="text" id="message" />
+            </label>
+        </div>
+        <button onclick="sendMessage();">메세지 보내기</button>
+    </section>
+</body>
+</html>
